@@ -1,0 +1,131 @@
+name: User Management Request  
+description: Request changes to teacher accounts or user permissions
+title: "User Management: [BRIEF DESCRIPTION]"
+labels: ["enhancement", "user-management", "admin"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## User Management Request
+        
+        Please fill out this form to request changes related to teacher accounts, passwords, or user permissions.
+        
+        **Security Note:** Do not include actual passwords in this form. This is for requesting password resets or account changes.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: "Type of Request *"
+      description: "What kind of user management change do you need?"
+      options:
+        - "Add new teacher account"
+        - "Remove teacher account"
+        - "Reset teacher password"
+        - "Change teacher display name"
+        - "Change teacher permissions/role"
+        - "Update teacher username"
+        - "Other"
+    validations:
+      required: true
+
+  - type: input
+    id: teacher-username
+    attributes:
+      label: "Teacher Username *"
+      description: "Username of the teacher account (current or desired)"
+      placeholder: "e.g., mrodriguez, jsmith"
+    validations:
+      required: true
+
+  - type: input
+    id: teacher-display-name
+    attributes:
+      label: "Teacher Display Name"
+      description: "Full name as it should appear to students (for new accounts or name changes)"
+      placeholder: "e.g., Ms. Rodriguez, Mr. Smith"
+
+  - type: dropdown
+    id: teacher-role
+    attributes:
+      label: "Teacher Role"
+      description: "What role should this teacher have? (for new accounts or role changes)"
+      options:
+        - ""
+        - "teacher"
+        - "admin"
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: "Justification *"
+      description: "Why is this change needed?"
+      placeholder: "e.g., New teacher starting next semester, teacher left the school, forgot password"
+    validations:
+      required: true
+
+  - type: input
+    id: temporary-password
+    attributes:
+      label: "Temporary Password Suggestion"
+      description: "For new accounts, suggest a temporary password pattern (they can change it later)"
+      placeholder: "e.g., subject123, welcome2024 (they will change this after first login)"
+
+  - type: checkboxes
+    id: account-status
+    attributes:
+      label: "Account Status Requirements"
+      description: "Select all that apply for new or modified accounts"
+      options:
+        - label: "Should be able to register students for activities"
+        - label: "Should be able to unregister students from activities"
+        - label: "Should have administrator privileges"
+        - label: "Account should be active immediately"
+        - label: "Teacher should be prompted to change password on first login"
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: "Additional Information"
+      description: "Any other details about this user management request"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### Acceptance Criteria
+        
+        For the development team, this request will be considered complete when:
+        - The requested account changes are implemented in the system
+        - The teacher can log in with the correct credentials (for new accounts/password resets)
+        - The teacher has the appropriate permissions for their role
+        - All existing functionality continues to work for other users
+        - If applicable, the old account is properly deactivated/removed
+        
+        ### Implementation Hints
+        
+        **For Account Changes:**
+        - Modify the `initial_teachers` list in `src/backend/database.py`
+        - Use the existing `hash_password()` function for password hashing
+        - Ensure username uniqueness when adding new accounts
+        
+        **Current Teacher Accounts:**
+        - `mrodriguez` - Ms. Rodriguez (teacher, password: art123)
+        - `mchen` - Mr. Chen (teacher, password: chess456)  
+        - `principal` - Principal Martinez (admin, password: admin789)
+        
+        **User Roles:**
+        - `teacher`: Can register/unregister students for activities
+        - `admin`: Full administrative access (may have additional permissions)
+        
+        **Security Considerations:**
+        - Always hash passwords using the existing hash_password function
+        - Never store plain text passwords in the code
+        - Consider password complexity requirements for new accounts
+        - Verify that old accounts are properly cleaned up when removed
+        
+        **Testing:**
+        - Test login with new credentials
+        - Verify permission levels work correctly  
+        - Ensure existing accounts still function
+        - Test password reset functionality if applicable

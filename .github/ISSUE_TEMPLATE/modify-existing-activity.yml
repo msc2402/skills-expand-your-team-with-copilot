@@ -1,0 +1,137 @@
+name: Modify Existing Activity
+description: Request changes to an existing extracurricular activity
+title: "Modify activity: [ACTIVITY NAME]"
+labels: ["enhancement", "modify-activity"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Modify Existing Activity Request
+        
+        Please fill out this form to request changes to an existing extracurricular activity in the Mergington High School system.
+        
+        **Note:** Only fill in the fields that need to be changed. Leave other fields blank if no change is needed.
+
+  - type: dropdown
+    id: existing-activity
+    attributes:
+      label: "Existing Activity Name *"
+      description: "Which activity needs to be modified?"
+      options:
+        - Programming Class
+        - Morning Fitness
+        - Weekend Robotics Workshop
+        - Science Olympiad
+        - Art Therapy
+        - Computer Science Club
+        - Other (please specify in description)
+    validations:
+      required: true
+
+  - type: input
+    id: other-activity-name
+    attributes:
+      label: "Other Activity Name"
+      description: "If you selected 'Other' above, please specify the activity name"
+      placeholder: "Activity name"
+
+  - type: checkboxes
+    id: change-type
+    attributes:
+      label: "What needs to be changed? *"
+      description: "Select all that apply"
+      options:
+        - label: "Activity name"
+        - label: "Description"
+        - label: "Schedule (days/time)"
+        - label: "Maximum participants"
+        - label: "Category"
+        - label: "Other (explain in additional notes)"
+    validations:
+      required: true
+
+  - type: input
+    id: new-name
+    attributes:
+      label: "New Activity Name"
+      description: "If changing the activity name, what should the new name be?"
+      placeholder: "e.g., Advanced Programming Class"
+
+  - type: textarea
+    id: new-description
+    attributes:
+      label: "New Description"
+      description: "If changing the description, provide the new description"
+      placeholder: "Provide the complete new description for the activity"
+
+  - type: input
+    id: new-schedule-days
+    attributes:
+      label: "New Schedule Days"
+      description: "If changing schedule days, specify the new days"
+      placeholder: "e.g., Monday, Wednesday, Friday OR Saturday"
+
+  - type: input
+    id: new-schedule-time
+    attributes:
+      label: "New Schedule Time"
+      description: "If changing schedule time, specify the new time"
+      placeholder: "e.g., 3:15 PM - 4:45 PM OR 9:00 AM - 12:00 PM"
+
+  - type: input
+    id: new-max-participants
+    attributes:
+      label: "New Maximum Participants"
+      description: "If changing participant limit, specify the new limit"
+      placeholder: "e.g., 15, 20, 25"
+
+  - type: dropdown
+    id: new-category
+    attributes:
+      label: "New Activity Category"
+      description: "If changing category, select the new category"
+      options:
+        - ""
+        - Sports
+        - Arts
+        - Academic
+        - Technology
+        - Community Service
+        - Other
+
+  - type: textarea
+    id: reason-for-change
+    attributes:
+      label: "Reason for Change *"
+      description: "Please explain why this change is needed"
+      placeholder: "e.g., Room availability changed, need more/fewer participants, content has been updated"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: "Additional Notes"
+      description: "Any other information about the requested changes"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### Acceptance Criteria
+        
+        For the development team, this request will be considered complete when:
+        - The specified changes are reflected in the activities list on the website
+        - The modified activity displays the updated information correctly
+        - All existing student registrations are preserved (unless participant limit is reduced)
+        - Teachers can continue to manage the activity with the new settings
+        - The activity continues to work with existing filtering and search functionality
+        
+        ### Implementation Hints
+        
+        - Modify the activity data in the `initial_activities` dictionary in `src/backend/database.py`
+        - If changing the activity name, update the key in the dictionary
+        - Ensure schedule format changes maintain both string and structured data format
+        - If reducing participant limit, consider how to handle existing registrations
+        - Update activity type detection in `src/static/app.js` if category changes affect filtering

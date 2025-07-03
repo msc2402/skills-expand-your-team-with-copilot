@@ -1,0 +1,156 @@
+name: General Feature Request
+description: Request a new feature or significant functionality enhancement
+title: "Feature Request: [BRIEF DESCRIPTION]"
+labels: ["enhancement", "feature-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        
+        Please describe a new feature or significant functionality improvement you'd like to see in the Mergington High School activities system.
+        
+        **Note:** For UI-only changes, use the "UI Enhancement Request" template instead.
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: "Feature Description *"
+      description: "Describe the new feature or functionality you want"
+      placeholder: "e.g., Add ability for students to see their registration history and manage their own signups"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-statement
+    attributes:
+      label: "Problem Statement *"
+      description: "What problem would this feature solve? Why is it needed?"
+      placeholder: "e.g., Currently students can't see what activities they're registered for, and teachers have to manually manage all registrations"
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: "User Story *"
+      description: "Describe how users would interact with this feature"
+      placeholder: "As a [student/teacher], I want to [do something] so that [benefit/outcome]"
+      value: "As a [user type], I want to [action] so that [benefit]"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: "Feature Type *"
+      description: "What type of feature is this?"
+      options:
+        - "Student functionality"
+        - "Teacher functionality"
+        - "Data management"
+        - "Reporting and analytics"
+        - "Communication features"
+        - "Security and authentication"
+        - "Integration with external systems"
+        - "Other"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: "Expected Complexity"
+      description: "How complex do you think this feature would be to implement?"
+      options:
+        - "Simple - Minor addition to existing functionality"
+        - "Medium - New functionality but using existing patterns"
+        - "Complex - Significant new functionality or design changes"
+        - "Very Complex - Major system changes or new architecture"
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "Acceptance Criteria"
+      description: "How will you know when this feature is working correctly? List specific requirements."
+      placeholder: |
+        e.g.,
+        - Students can view a list of their current registrations
+        - Students can cancel their own registrations with confirmation
+        - Teachers receive notifications when students self-cancel
+        - Registration changes are reflected immediately in the system
+      value: |
+        - 
+        - 
+        - 
+        - 
+
+  - type: textarea
+    id: example-usage
+    attributes:
+      label: "Example Usage Scenario"
+      description: "Provide a detailed example of how this feature would be used"
+      placeholder: "Walk through a specific scenario from start to finish"
+
+  - type: checkboxes
+    id: related-areas
+    attributes:
+      label: "Related System Areas"
+      description: "Which parts of the system would this feature likely affect?"
+      options:
+        - label: "Student registration process"
+        - label: "Teacher management interface"
+        - label: "Activity data and display"
+        - label: "Authentication and permissions"
+        - label: "Database structure"
+        - label: "API endpoints"
+        - label: "Frontend user interface"
+        - label: "Not sure"
+
+  - type: textarea
+    id: alternative-solutions
+    attributes:
+      label: "Alternative Solutions Considered"
+      description: "Have you considered any other ways to solve this problem?"
+      placeholder: "e.g., Could be handled manually, existing workarounds, simpler alternatives"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "Additional Context"
+      description: "Any other relevant information about this feature request"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### Acceptance Criteria Template
+        
+        For the development team, this feature will be considered complete when:
+        - All specified requirements in the acceptance criteria are met
+        - The feature integrates well with existing functionality
+        - Appropriate error handling and validation is implemented
+        - The feature works across different user types and device types as specified
+        - Documentation is updated if needed
+        
+        ### Implementation Considerations
+        
+        **Planning Questions:**
+        - Does this require new database fields or API endpoints?
+        - How does this interact with existing user authentication?
+        - Are there permission/security considerations?
+        - What should happen in edge cases or error conditions?
+        
+        **Common Implementation Areas:**
+        - **Backend API**: `src/backend/routers/` for new endpoints
+        - **Database**: `src/backend/database.py` for data structure changes
+        - **Frontend UI**: `src/static/index.html` and `src/static/styles.css`
+        - **Frontend Logic**: `src/static/app.js` for new interactions
+        - **Authentication**: `src/backend/routers/auth.py` if permissions change
+        
+        **Testing Considerations:**
+        - Test with different user types (students, teachers)
+        - Verify functionality works on mobile and desktop
+        - Test error cases and edge conditions
+        - Ensure existing features continue to work

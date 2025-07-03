@@ -1,0 +1,121 @@
+name: Add Activity Category
+description: Request to add a new category type for grouping activities
+title: "Add activity category: [CATEGORY NAME]"
+labels: ["enhancement", "new-category"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Add New Activity Category Request
+        
+        Please fill out this form to request a new category for grouping extracurricular activities.
+        
+        **Current categories:** Sports, Arts, Academic, Technology, Community Service
+
+  - type: input
+    id: category-name
+    attributes:
+      label: "Category Name *"
+      description: "What should the new category be called?"
+      placeholder: "e.g., Leadership, Health & Wellness, Cultural, STEM"
+    validations:
+      required: true
+
+  - type: textarea
+    id: category-description
+    attributes:
+      label: "Category Description *"
+      description: "Describe what types of activities would fit in this category"
+      placeholder: "e.g., Activities focused on developing leadership skills, including student government, peer mentoring, and project management"
+    validations:
+      required: true
+
+  - type: textarea
+    id: example-activities
+    attributes:
+      label: "Example Activities *"
+      description: "List 3-5 specific activities that would belong in this category"
+      placeholder: |
+        e.g.,
+        - Student Government
+        - Peer Tutoring Program  
+        - Leadership Workshop
+        - Community Project Management
+      value: |
+        - 
+        - 
+        - 
+        - 
+        - 
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: existing-activities
+    attributes:
+      label: "Should any existing activities be moved to this category?"
+      description: "Check any existing activities that should be recategorized"
+      options:
+        - label: "Programming Class (currently Technology)"
+        - label: "Morning Fitness (currently Sports)"
+        - label: "Weekend Robotics Workshop (currently Technology)"
+        - label: "Science Olympiad (currently Academic)"
+        - label: "Art Therapy (currently Arts)"
+        - label: "Computer Science Club (currently Technology)"
+        - label: "None - this is for new activities only"
+
+  - type: input
+    id: category-color
+    attributes:
+      label: "Suggested Color"
+      description: "What color would represent this category well? (optional)"
+      placeholder: "e.g., green, purple, orange, blue"
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: "Why is this category needed? *"
+      description: "Explain why this new category would be useful for students and teachers"
+      placeholder: "e.g., We have many leadership-focused activities that don't fit well in existing categories, and students have trouble finding them"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: "Additional Notes"
+      description: "Any other information about this category request"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### Acceptance Criteria
+        
+        For the development team, this request will be considered complete when:
+        - The new category appears as a filter option on the activities page
+        - Activities can be assigned to this category and display correctly
+        - The category works with existing filtering and search functionality
+        - Any existing activities specified for recategorization are moved appropriately
+        - The category displays with appropriate styling consistent with other categories
+        
+        ### Implementation Hints
+        
+        **Frontend Changes (JavaScript):**
+        - Update the `getActivityType()` function in `src/static/app.js` to recognize the new category
+        - Add keyword detection logic for activities that should automatically be assigned to this category
+        - Ensure the category works with existing filter buttons
+        
+        **UI Changes (if category filters exist):**
+        - Add new filter button for the category in `src/static/index.html` 
+        - Add appropriate CSS styling for the new category in `src/static/styles.css`
+        
+        **Data Changes:**
+        - No backend changes needed if using automatic detection
+        - If manual categorization is preferred, consider adding category field to activity data structure
+        
+        **Testing:**
+        - Verify new activities can be assigned to this category
+        - Test that filtering by the new category works correctly
+        - Ensure existing functionality is not broken

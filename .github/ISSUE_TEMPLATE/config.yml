@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: "💬 General Questions"
+    url: "https://github.com/msc2402/skills-expand-your-team-with-copilot/discussions"
+    about: "Ask questions about using the system or request general help"
+  - name: "📚 Documentation"
+    url: "https://github.com/msc2402/skills-expand-your-team-with-copilot/blob/main/docs/how-to-develop.md"
+    about: "View the development documentation and setup guide"
