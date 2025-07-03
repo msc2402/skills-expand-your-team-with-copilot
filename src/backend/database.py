@@ -3,10 +3,18 @@ MongoDB database configuration and setup for Mergington High School API
 """
 
 from pymongo import MongoClient
+import mongomock
 from argon2 import PasswordHasher
 
-# Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')
+# Connect to MongoDB (use mongomock for testing)
+try:
+    client = MongoClient('mongodb://localhost:27017/', serverSelectionTimeoutMS=1000)
+    # Test the connection
+    client.admin.command('ping')
+    print("Connected to MongoDB")
+except Exception as e:
+    print(f"MongoDB not available ({e}), using mock database for testing")
+    client = mongomock.MongoClient()
 db = client['mergington_high']
 activities_collection = db['activities']
 teachers_collection = db['teachers']
