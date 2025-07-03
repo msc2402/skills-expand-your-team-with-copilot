@@ -1,0 +1,113 @@
+name: Add New Activity
+description: Request to add a new extracurricular activity to the system
+title: "Add new activity: [ACTIVITY NAME]"
+labels: ["enhancement", "new-activity"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Add New Activity Request
+        
+        Please fill out this form to request a new extracurricular activity to be added to the Mergington High School system.
+        
+        **Note:** All fields marked with * are required and will help the development team implement your request accurately.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: "Activity Name *"
+      description: "What is the name of the new activity?"
+      placeholder: "e.g., Debate Club, Photography Workshop, Chess Club"
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity-description
+    attributes:
+      label: "Activity Description *"
+      description: "Provide a detailed description of what this activity involves"
+      placeholder: "e.g., Learn photography techniques, develop creative skills, and participate in photo contests. Students will work with digital cameras and editing software."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity-category
+    attributes:
+      label: "Activity Category *"
+      description: "What type of activity is this?"
+      options:
+        - Sports
+        - Arts
+        - Academic
+        - Technology
+        - Community Service
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: schedule-days
+    attributes:
+      label: "Schedule Days *"
+      description: "Which day(s) of the week will this activity take place?"
+      placeholder: "e.g., Monday, Wednesday, Friday OR Saturday"
+    validations:
+      required: true
+
+  - type: input
+    id: schedule-time
+    attributes:
+      label: "Schedule Time *"
+      description: "What time will this activity run?"
+      placeholder: "e.g., 3:15 PM - 4:45 PM OR 9:00 AM - 12:00 PM"
+    validations:
+      required: true
+
+  - type: input
+    id: max-participants
+    attributes:
+      label: "Maximum Participants *"
+      description: "How many students can participate in this activity?"
+      placeholder: "e.g., 15, 20, 25"
+    validations:
+      required: true
+
+  - type: input
+    id: teacher-supervisor
+    attributes:
+      label: "Teacher Supervisor"
+      description: "Which teacher will supervise this activity? (if known)"
+      placeholder: "e.g., Ms. Rodriguez, Mr. Chen"
+
+  - type: textarea
+    id: special-requirements
+    attributes:
+      label: "Special Requirements"
+      description: "Are there any special requirements, equipment, or prerequisites for this activity?"
+      placeholder: "e.g., Students must bring their own cameras, requires art supplies, need computer access"
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: "Additional Notes"
+      description: "Any other information that would be helpful for implementing this activity"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### Acceptance Criteria
+        
+        For the development team, this request will be considered complete when:
+        - The new activity appears in the activities list on the website
+        - Students can sign up for the activity with the specified participant limit
+        - The activity displays the correct schedule, description, and category
+        - Teachers can manage student registrations for this activity
+        
+        ### Implementation Hints
+        
+        - Add the activity to the `initial_activities` data in `src/backend/database.py`
+        - Ensure the schedule format follows the existing pattern with both string and structured data
+        - The activity category should work with existing filtering functionality
+        - Consider adding appropriate activity type detection logic in `src/static/app.js` if needed

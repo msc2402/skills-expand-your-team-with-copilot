@@ -1,0 +1,135 @@
+name: UI Enhancement Request
+description: Request improvements to the user interface and user experience
+title: "UI Enhancement: [BRIEF DESCRIPTION]"
+labels: ["enhancement", "ui", "frontend"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## User Interface Enhancement Request
+        
+        Please describe the UI/UX improvement you'd like to see in the Mergington High School activities system.
+        
+        **Note:** This template is for interface improvements, not for adding new activities or changing activity data.
+
+  - type: dropdown
+    id: enhancement-area
+    attributes:
+      label: "What area of the interface needs improvement? *"
+      description: "Select the main area you want to enhance"
+      options:
+        - "Activities list display"
+        - "Activity filtering and search"
+        - "Student registration process"
+        - "Teacher login and authentication"
+        - "Navigation and layout"
+        - "Mobile responsiveness"
+        - "Accessibility"
+        - "Visual design and styling"
+        - "Error messages and feedback"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: "Current Behavior *"
+      description: "Describe how the interface currently works or looks"
+      placeholder: "e.g., The activities are displayed in a simple list format without any visual grouping"
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired-behavior
+    attributes:
+      label: "Desired Improvement *"
+      description: "Describe what you want the interface to do or look like instead"
+      placeholder: "e.g., Activities should be grouped by category with colored headers and icons"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-type
+    attributes:
+      label: "Who would benefit from this enhancement? *"
+      description: "Select the primary users who would benefit"
+      options:
+        - "Students"
+        - "Teachers"
+        - "Both students and teachers"
+        - "System administrators"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "How important is this enhancement?"
+      description: "Select the priority level"
+      options:
+        - "Low - Nice to have"
+        - "Medium - Would improve user experience"
+        - "High - Significantly impacts usability"
+        - "Critical - Current interface is difficult to use"
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: "Use Case Example"
+      description: "Provide a specific example of when this enhancement would be helpful"
+      placeholder: "e.g., When a student is looking for sports activities, they currently have to scroll through all activities to find them"
+
+  - type: checkboxes
+    id: device-types
+    attributes:
+      label: "Which devices should this work on?"
+      description: "Select all that apply"
+      options:
+        - label: "Desktop computers"
+        - label: "Tablets"
+        - label: "Mobile phones"
+        - label: "All devices"
+
+  - type: textarea
+    id: design-suggestions
+    attributes:
+      label: "Design Suggestions"
+      description: "Do you have any specific ideas about how this could be implemented?"
+      placeholder: "e.g., Use cards instead of a list, add color coding, include icons, etc."
+
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: "Additional Notes"
+      description: "Any other details about this enhancement request"
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### Acceptance Criteria
+        
+        For the development team, this request will be considered complete when:
+        - The specified UI improvement is implemented and visible to users
+        - The enhancement works consistently across specified device types
+        - The change improves usability without breaking existing functionality
+        - The implementation follows existing design patterns in the application
+        - Any new interface elements are accessible (keyboard navigation, screen readers)
+        
+        ### Implementation Areas
+        
+        Depending on the enhancement type, changes may be needed in:
+        - **Frontend styling**: `src/static/styles.css`
+        - **HTML structure**: `src/static/index.html`
+        - **JavaScript interactions**: `src/static/app.js`
+        - **Backend API**: `src/backend/routers/` (if new data or functionality needed)
+        
+        ### Design Considerations
+        
+        - Maintain consistency with existing visual style
+        - Ensure mobile responsiveness if not already specified
+        - Consider accessibility guidelines (color contrast, keyboard navigation)
+        - Test with different screen sizes and browsers
+        - Preserve existing functionality while adding improvements
